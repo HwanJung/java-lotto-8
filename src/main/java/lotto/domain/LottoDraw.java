@@ -1,15 +1,17 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.List;
 
 public record LottoDraw(
     List<Integer> winningNumbers,
     int bonusNumber
 ) {
-    public LottoDraw {
+    public LottoDraw(List<Integer> winningNumbers, int bonusNumber) {
         validateDuplication(winningNumbers, bonusNumber);
-        Collections.sort(winningNumbers);
+        this.winningNumbers = winningNumbers.stream()
+            .sorted()
+            .toList();
+        this.bonusNumber = bonusNumber;
     }
 
     private void validateDuplication(List<Integer> winningNumbers, int bonusNumber) {
