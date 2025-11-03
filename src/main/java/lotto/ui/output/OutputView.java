@@ -31,7 +31,7 @@ public class OutputView {
 
     public void printProfitRate(double profitRate) {
         String format = "총 수익률은 " +
-            String.format("%.2f", profitRate) +
+            String.format("%.1f", profitRate) +
             "%입니다.";
         System.out.println(format);
     }
@@ -46,7 +46,7 @@ public class OutputView {
             format += ", 보너스 볼 일치";
         }
         format += " (" + String.format("%,d", rank.getPrize()) + "원)" +
-            " - " + rankCount.get(LottoRank.FIFTH) + "개\n";
+            " - " + rankCount.get(rank) + "개\n";
 
         return format;
     }

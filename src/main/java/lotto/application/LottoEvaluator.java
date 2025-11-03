@@ -30,7 +30,7 @@ public class LottoEvaluator {
             profit += entry.getKey().getPrize() * entry.getValue();
         }
 
-        return profit / (double) purchaseAmount;
+        return (profit / (double) purchaseAmount) * 100;
     }
 
     private void countRanks(List<Lotto> lottos, LottoDraw draw, Map<LottoRank, Integer> rankCount) {

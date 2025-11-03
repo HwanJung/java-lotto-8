@@ -53,6 +53,39 @@ public class LottoEvaluatorTest {
     }
 
     @Test
+    @DisplayName("여러 로또를 평가했을 때 각 등수별 개수 카운트")
+    void evaluate_whenGivenLottos_thenCountEachRank2() {
+        // given
+        LottoDraw draw = new LottoDraw(
+            List.of(1, 2, 3, 4, 5, 6),
+            7
+        );
+
+        Lotto firstRankLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));    // 5개 → THIRD
+        Lotto fourthRankLotto = new Lotto(List.of(1, 2, 3, 4, 8, 9));    // 4개 → FOURTH
+        Lotto fifthRankLotto = new Lotto(List.of(1, 2, 3, 8, 9, 10));    // 3개 → FIFTH
+        Lotto noneRankLotto = new Lotto(List.of(1, 2, 8, 9, 10, 11));    // 2개 → NONE
+
+        List<Lotto> lottos = List.of(
+            firstRankLotto,
+            fourthRankLotto,
+            fifthRankLotto,
+            noneRankLotto
+        );
+
+        // when
+        Map<LottoRank, Integer> rankCount = lottoEvaluator.evaluate(lottos, draw);
+
+        // then
+        assertEquals(1, rankCount.get(LottoRank.FIRST));
+        assertEquals(0, rankCount.get(LottoRank.SECOND));
+        assertEquals(0, rankCount.get(LottoRank.THIRD));
+        assertEquals(1, rankCount.get(LottoRank.FOURTH));
+        assertEquals(1, rankCount.get(LottoRank.FIFTH));
+        assertEquals(1, rankCount.get(LottoRank.NONE));
+    }
+
+    @Test
     @DisplayName("로또의 당첨 결과와 구매 금액을 통해 수익률 계산")
     void calculateProfitRate_whenGivenResult_thenReturnProfitRate() {
         // given
