@@ -17,6 +17,7 @@ public class LottoEvaluator {
         rankCount.put(LottoRank.THIRD, 0);
         rankCount.put(LottoRank.FOURTH, 0);
         rankCount.put(LottoRank.FIFTH, 0);
+        rankCount.put(LottoRank.NONE, 0);
 
         countRanks(lottos, draw, rankCount);
 
