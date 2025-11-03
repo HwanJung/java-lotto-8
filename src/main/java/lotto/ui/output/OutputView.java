@@ -42,7 +42,7 @@ public class OutputView {
 
     private String makeResultFormat(LottoRank rank, Map<LottoRank, Integer> rankCount) {
         String format = rank.getMatchCount() + "개 일치";
-        if (rank.equals(LottoRank.SECOND)) {
+        if (rank.isBonusMatched()) {
             format += ", 보너스 볼 일치";
         }
         format += " (" + String.format("%,d", rank.getPrize()) + "원)" +
