@@ -14,7 +14,6 @@ public class LottoIssuer {
     }
 
     public List<Lotto> buyLotto(int purchaseAmount) {
-        validatePurchaseAmount(purchaseAmount);
         int purchaseCnt = purchaseAmount / 1000;
 
         List<Lotto> lottos = new ArrayList<>();
@@ -25,15 +24,7 @@ public class LottoIssuer {
         return lottos;
     }
 
-    private void validatePurchaseAmount(int purchaseAmount) {
-        if (purchaseAmount < 1000) {
-            throw new IllegalArgumentException("[ERROR] Purchase amount must be greater than 1000.");
-        }
 
-        if (purchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] Purchase amount must be a multiple of 1000.");
-        }
-    }
 
 
 }

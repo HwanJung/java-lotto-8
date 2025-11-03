@@ -8,26 +8,13 @@ public record LottoDraw(
     int bonusNumber
 ) {
     public LottoDraw {
-        validateWinningNumbers(winningNumbers);
-        validateBonusNumber(bonusNumber);
+        validateDuplication(winningNumbers, bonusNumber);
         Collections.sort(winningNumbers);
     }
 
-    private void validateWinningNumbers(List<Integer> winningNumbers) {
-        if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] Winning numbers must be six numbers.");
-        }
-
-        for (int number : winningNumbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] Winning numbers must be between 1 and 45.");
-            }
-        }
-    }
-
-    private void validateBonusNumber(int bonusNumber) {
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.");
+    private void validateDuplication(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("The bonus number " + bonusNumber + " is already in winning numbers");
         }
     }
 }
