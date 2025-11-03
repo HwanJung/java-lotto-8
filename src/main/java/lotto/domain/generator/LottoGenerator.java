@@ -1,4 +1,4 @@
-package lotto.strategy;
+package lotto.domain.generator;
 
 import lotto.domain.Lotto;
 

@@ -13,7 +13,7 @@ public class Parser {
         return makeIntegerNumbers(numbers);
     }
 
-    public int parseBonusAmount(String input) {
+    public int parseBonusNumber(String input) {
         return parseToInt(input);
     }
 

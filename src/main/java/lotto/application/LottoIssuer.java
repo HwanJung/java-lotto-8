@@ -1,14 +1,15 @@
-package lotto.domain;
+package lotto.application;
 
-import lotto.strategy.LottoGenerator;
+import lotto.domain.Lotto;
+import lotto.domain.generator.LottoGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoService {
+public class LottoIssuer {
     private final LottoGenerator lottoGenerator;
 
-    public LottoService(LottoGenerator lottoGenerator) {
+    public LottoIssuer(LottoGenerator lottoGenerator) {
         this.lottoGenerator = lottoGenerator;
     }
 

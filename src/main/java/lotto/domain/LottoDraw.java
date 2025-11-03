@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public record LottoDraw(
@@ -9,6 +10,7 @@ public record LottoDraw(
     public LottoDraw {
         validateWinningNumbers(winningNumbers);
         validateBonusNumber(bonusNumber);
+        Collections.sort(winningNumbers);
     }
 
     private void validateWinningNumbers(List<Integer> winningNumbers) {
